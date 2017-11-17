@@ -1,6 +1,7 @@
 package Servlet;
 
 import DAO.AutenticacaoDAO;
+import Model.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -11,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 
-
-
 @WebServlet(name = "ValidaUsuario", urlPatterns = {"/ValidaUsuario"})
 public class ValidaUsuario extends HttpServlet {
 
@@ -20,18 +19,11 @@ public class ValidaUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         AutenticacaoDAO aDAO = new AutenticacaoDAO();
-        HashMap<String, Integer> hm = new HashMap<String, Integer>();
+        HashMap<String, Usuario> hm = new HashMap<>();
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-        int msg;
-        int voto = aDAO.autenticar(login, senha);
-        if(voto == 0 || voto == 1){
-            System.out.println("Chegou aqui: "+ voto);
-            msg = voto; //0 se não votou, 1 se votou
-        }
-        else
-            msg = 2; //se não encontrou o usuario
-        hm.put("message", msg);
+        Usuario usuario = aDAO.autenticar(login, senha);
+        hm.put("usuario", usuario);
         //Cada chave do HashMap vira uma chave do JSON
         JSONObject json = JSONObject.fromObject(hm);
         response.setContentType("application/json");
