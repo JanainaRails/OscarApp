@@ -22,7 +22,7 @@ public class AutenticacaoDAO {
             rs = stmt.executeQuery();
             if(rs.next()){
                 u = new Usuario();
-                System.out.println("DAO: Login: " + rs.getString(1) + " - Senha: " + rs.getString(2) + " - Voto: " + rs.getString(3));
+                System.out.println("DAO: Id: " + rs.getString(1) + " - Login: " + rs.getString(2) + " - Senha: " + rs.getString(3));
                 u.setCod(rs.getInt(1));
                 u.setLogin(rs.getString(2));
                 u.setNome(rs.getString(5));
