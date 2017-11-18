@@ -4,7 +4,26 @@ public class Usuario {
     private int cod;
     private String login, senha, nome;
     private boolean votou;
+    private Diretor diretor;
+    private Filme filme;
 
+    public Diretor getDiretor() {
+        return diretor;
+    }
+
+    public void setDiretor(Diretor diretor) {
+        this.diretor = diretor;
+    }
+
+    public Filme getFilme() {
+        return filme;
+    }
+
+    public void setFilme(Filme filme) {
+        this.filme = filme;
+    }
+
+    
     public int getCod() {
         return cod;
     }
