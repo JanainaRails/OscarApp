@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ComputarVotoDAO {
     private final static String INSERE = "INSERT INTO votos(diretor, filme, id_usuario) VALUES (?, ?, ?)";
-    private final static String VOTOU = "UPDATE usuario SET voto = 1 WHERE id_usuario = ?";
+    private final static String VOTOU = "UPDATE usuario SET voto = 1 WHERE id = ?";
 
     public boolean computarVoto(int diretor, int filme, int usuario){
         Connection conn = null;
