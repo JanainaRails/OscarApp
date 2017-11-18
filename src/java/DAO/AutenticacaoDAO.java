@@ -10,6 +10,8 @@ public class AutenticacaoDAO {
     private final static String BUSCA = "SELECT id, login, senha, voto, nome FROM usuario WHERE login = ? AND senha = ?";
     
     public Usuario autenticar(String login, String senha){
+        System.out.println("senha = " + senha);
+        System.out.println("login = " + login);
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -26,6 +28,7 @@ public class AutenticacaoDAO {
                 u.setCod(rs.getInt(1));
                 u.setLogin(rs.getString(2));
                 u.setVotou(rs.getBoolean(4));
+                u.setNome(rs.getString(5));
             }
             return u;
         }catch(SQLException e){
