@@ -12,6 +12,7 @@ public class ComputarVotoDAO {
         Connection conn = null;
         PreparedStatement stmt = null;
         try{
+            System.out.println("id ser = " + usuario);
             conn = new ConnectionFactory().getConnection();
             conn.setAutoCommit(false);
             stmt = conn.prepareStatement(INSERE);
