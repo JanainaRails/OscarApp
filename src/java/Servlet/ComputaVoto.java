@@ -32,8 +32,10 @@ public class ComputaVoto extends HttpServlet {
         String filme = request.getParameter("filme");
         String usuario = request.getParameter("usuario");
         int msg;
+        int dir = Integer.parseInt(diretor);
+        int fil = Integer.parseInt(filme);
         int usu = Integer.parseInt(usuario);
-        if(cvDAO.computarVoto(diretor, filme, usu))
+        if(cvDAO.computarVoto(dir, fil, usu))
             msg = 1;
         else
             msg = 0;
